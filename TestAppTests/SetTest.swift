@@ -12,9 +12,21 @@ import XCTest
 
 class SetTest: XCTestCase {
     
+    var emptySet = CustomSet()
+    var oneSet = CustomSet()
+    var multSet = CustomSet()
+    var dupliSet = CustomSet()
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        oneSet.add(number: 1)
+        
+        multSet.add(number: 1)
+        multSet.add(number: 2)
+        
+        dupliSet.add(number: 1)
+        dupliSet.add(number: 1)
     }
     
     override func tearDown() {
@@ -23,13 +35,34 @@ class SetTest: XCTestCase {
     }
     
     func testIsEmpty() {
-        var set = CustomSet()
-        set.add(number: 5)
-        XCTAssert(!set.empty())
+        XCTAssert(emptySet.empty())
         
-        set = CustomSet()
-        XCTAssert(set.empty())
+        XCTAssert(!oneSet.empty())
     }
     
+    func testSize() {
+        XCTAssert(emptySet.length() == 0)
+        XCTAssert(oneSet.length() == 1)
+    }
     
+    func testAdd() {
+        XCTAssert(oneSet.get(index: 0) == 1)
+        XCTAssert(oneSet.get(index: 1) == -1)
+        
+        XCTAssert(multSet.get(index: 0) == 1)
+        XCTAssert(multSet.get(index: 1) == 2)
+        
+        XCTAssert(dupliSet.length() == 1)
+    }
+    
+    func testRemove() {
+        emptySet.remove(number: 5)
+        XCTAssert(emptySet.size == 0)
+        
+        oneSet.remove(number: 1)
+        XCTAssert(oneSet.size == 0)
+        
+        multSet.remove(number: 1)
+        XCTAssert(multSet.size == 1)
+    }
 }
