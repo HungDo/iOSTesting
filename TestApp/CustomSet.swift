@@ -19,7 +19,7 @@ struct CustomSet {
     }
     
     mutating func add(number: Int) {
-        if indexOf(index: number) != -1 {
+        if indexOf(number) != -1 {
             return
         }
         
@@ -30,7 +30,7 @@ struct CustomSet {
     }
     
     mutating func remove(number: Int) {
-        let index : Int = indexOf(index: number)
+        let index : Int = indexOf(number)
 
         if index == -1 {
             return
