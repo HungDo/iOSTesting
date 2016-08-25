@@ -20,13 +20,13 @@ class SetTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        oneSet.add(number: 1)
+        oneSet.add(1)
         
-        multSet.add(number: 1)
-        multSet.add(number: 2)
+        multSet.add(1)
+        multSet.add(2)
         
-        dupliSet.add(number: 1)
-        dupliSet.add(number: 1)
+        dupliSet.add(1)
+        dupliSet.add(1)
     }
     
     override func tearDown() {
@@ -46,23 +46,23 @@ class SetTest: XCTestCase {
     }
     
     func testAdd() {
-        XCTAssert(oneSet.get(index: 0) == 1)
-        XCTAssert(oneSet.get(index: 1) == -1)
+        XCTAssert(oneSet.get(0) == 1)
+        XCTAssert(oneSet.get(1) == -1)
         
-        XCTAssert(multSet.get(index: 0) == 1)
-        XCTAssert(multSet.get(index: 1) == 2)
+        XCTAssert(multSet.get(0) == 1)
+        XCTAssert(multSet.get(1) == 2)
         
         XCTAssert(dupliSet.length() == 1)
     }
     
     func testRemove() {
-        emptySet.remove(number: 5)
+        emptySet.remove(5)
         XCTAssert(emptySet.size == 0)
         
-        oneSet.remove(number: 1)
+        oneSet.remove(1)
         XCTAssert(oneSet.size == 0)
         
-        multSet.remove(number: 1)
+        multSet.remove(1)
         XCTAssert(multSet.size == 1)
     }
 }
